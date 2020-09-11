@@ -1,54 +1,108 @@
 html {
     height: 100%;
-    font-family: 'Montserrat';
+    font-family: 'Quicksand';
 
     display: grid;
     align-items: center;
     justify-items: center;
 
-    --bg: #fcfcfc;
-    --bg-panel: #ebebeb;
     --color-headings: #0077ff;
-    --color-text: #333333;
+
+    --text--main: #333333;
+    --text--dimmed: #c4c4c4;
+
+    --elements--main: #f0f5f5;
+    --elements--shadow: #ccd0d0;
+    --elements--highlight: #ffffff;
+
+    --helper--grey: #c4c4c4;
+    --helper--danger: #be475d;
+    --helper--success: #4ab66f;
+    --helper--pop-colour: #05dadc;
 }
 // colors for dark theme
 html[data-theme='dark'] {
-    --bg: #333333;
-    --bg-panel: #434343;
     --color-headings: #3694ff;
-    --color-text: #b5b5b5;
+
+    --text--main: #b6b6b6;
+    --text--dimmed: #333333;
+
+    --elements--main: #242727;
+    --elements--shadow: #1b1d1d;
+    --elements--highlight: #2d3131;
+
+    --helper--grey: #c4c4c4;
+    --helper--danger: #be475d;
+    --helper--success: #4ab66f;
+    --helper--pop-colour: #24d4d4;
+
 }
 
 // page styles
 body {
-    background-color: var(--bg);
+    background-color: var(--elements--main);
 }
 
-.container {
-    background-color: var(--bg-panel);
+.element__box {
     margin: 5em;
     padding: 5em;
-    border-radius: 15px;
 
-    display: grid;
-    grid-template-columns: 80% auto;
-    grid-template-rows: auto auto;
-    grid-template-areas:
-        "title switch"
-        "content content";
+    color: var(--text--main);
+    box-shadow:
+        3px 3px 5px var(--elements--shadow),
+        -3px -3px 5px var(--elements--highlight);
+    border-radius: 10px;
+    background-color: var(--elements--main);
+    transition: all 0.3 ease-in-out;
+
+    // for circle elements/button
+    &--round {
+        border-radius: 50%;
+    }
+
+    // no radius (for 100% width elements)
+    &--flat {
+        border-radius: 0;
+    }
+
+    // "pressed" effect (similar to an active state for button)
+    &--pressed {
+        box-shadow: 
+            inset 3px 1px 6px var(--elements--shadow),
+            inset -2px -5px 10px var(--elements--highlight);
+        transition: all 0.3 ease-out;
+    }
+
+    // element is interactive
+    &--interactive {
+        cursor: pointer;
+        transition: all 0.1s ease-out;        // - hover
+        &:hover {
+            box-shadow: 
+                5px 5px 15px var(--elements--shadow), 
+                -5px -5px 15px var(--elements--highlight);
+            transition: all 0.3s ease-out;
+        }        // - active("selected")
+        &:active {
+            box-shadow: 
+                inset 3px 1px 6px var(--elements--shadow), 
+                inset -2px -5px 10px var(--elements--highlight);
+            transition: all 0.3s ease-out;
+        }
+    }
+}
     
-    h1 {
-        margin: 0;
-        color: var(--color-headings);
-    }
+h1 {
+    margin: 0;
+    color: var(--color-headings);
+}
 
-    p, td, th {
-        color: var(--color-text);
-        grid-area: content;
-        font-size: 1.1em;
-        line-height: 1.8em;
-        margin-top: 2em;
-    }
+p, td, th {
+    color: var(--text--main);
+    grid-area: content;
+    font-size: 1.1em;
+    line-height: 1.8em;
+    margin-top: 2em;
 }
 
 // style for dark-light switch
@@ -99,6 +153,6 @@ html.transition,
 html.transition *,
 html.transition *:before,
 html.transition *:after {
-    transition: all 1s !important;
+    transition: all 0.75s !important;
     transition-delay: 0 !important;
 }

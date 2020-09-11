@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Document</title>
+    <!-- custom css -->
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <div class="container">
+    <div class="toggle-container">
+        <input type="checkbox" name="theme" id="switch"><label id="switchLabel" for="switch">Toggle</label>
+    </div>
+    <div class="element__box">
         <h1>Light / Dark Mode</h1>
-        <div class="toggle-container">
-            <input type="checkbox" name="theme" id="switch"><label id="switchLabel" for="switch">Toggle</label>
-        </div>  
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque harum voluptatum asperiores molestiae corrupti expedita laudantium vitae minima! Perferendis qui porro minima, eum accusantium corrupti doloremque dolore impedit iusto suscipit?</p>
     </div>
+    <!-- custom js -->
     <script src="main.js"></script>
 </body>
 </html>
